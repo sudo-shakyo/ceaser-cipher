@@ -1,71 +1,40 @@
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+import art
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
+print(art.logo)
 
-def encrypt(original_text, shift_amount):
-
-    text_list = list(original_text)
-    print(text_list)
-    index_list = []
-    shifted_index_list = []
-    encrypted_list = []
-    shifted_word = ""
-
-    for letter in text_list:
-        index = alphabet.index(letter)
-        index_list.append(index)
-    print(index_list)
-
-    for i in index_list:
-        i += shift_amount
-        shifted_index_list.append(i%len(alphabet))
-    print(shifted_index_list)
-
-    for j in shifted_index_list:
-        k = alphabet[j]
-        encrypted_list.append(k)
-    print(encrypted_list)
-
-    for shifted_letters in encrypted_list:
-        shifted_word += shifted_letters
-
-    print(f"here is the encrypted word {shifted_word}")
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+            'v', 'w', 'x', 'y', 'z']
 
 
+def caesar(original_text, shift_amount, encode_or_decode):
+    output_text = ""
+    if encode_or_decode == "decode":
+        shift_amount *= -1
+
+    for letter in original_text:
+
+        if letter not in alphabet:
+            output_text += letter
+        else:
+            shifted_position = alphabet.index(letter) + shift_amount
+            shifted_position %= len(alphabet)
+            output_text += alphabet[shifted_position]
+    print(f"Here is the {encode_or_decode}d result: {output_text}")
 
 
-def decrypt(encrypted_text, shift_amount):
+should_continue = True
 
-    encrypted_text_list = list(encrypted_text)
-    index_list = []
-    decrypted_index_list = []
-    decrypted_word = ""
-    for letter in encrypted_text_list:
-        index = alphabet.index(letter)
-        index_list.append(index)
-    print(index_list)
+while should_continue:
 
-    for indices in index_list:
-        indices -= shift_amount
-        decrypted_index_list.append(indices % len(alphabet))
-    print(decrypted_index_list)
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower()
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
 
-    for shifted_indices in decrypted_index_list:
-        letter = alphabet[shifted_indices]
-        decrypted_word += letter
+    caesar(original_text=text, shift_amount=shift, encode_or_decode=direction)
 
-    print(f"the decrypted word is {decrypted_word}")
+    restart = input("Type 'yes' if you want to go again. Otherwise, type 'no'.\n").lower()
+    if restart == "no":
+        should_continue = False
+        print("Goodbye")
 
-def caesar(direction_, coded_word, number_shift):
-    if direction_ == "encode":
-        encrypt(coded_word, number_shift)
 
-    elif direction_ == "decode":
-        decrypt(coded_word, number_shift)
-
-    else:
-        print("wrong parameters")
-
-caesar(direction_ = direction, coded_word = text, number_shift = shift)
