@@ -15,8 +15,6 @@ A simple yet powerful implementation of the classic Caesar cipher in Python.
   - [Installation](#installation)  
   - [Usage](#usage)  
 - [Examples](#examples)  
-- [Contributing](#contributing)  
-- [License](#license)  
 - [Author](#author)  
 
 ---
