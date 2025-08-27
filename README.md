@@ -63,6 +63,7 @@ run the file by the following command:
 ```
 ### Examples 
 ### Encryption
+```
 Type 'encode' to encrypt, type 'decode' to decrypt:
 encode
 Type your message:
@@ -71,8 +72,9 @@ Type the shift number:
 3
 Here is the encoded result: khoor zruog!
 Type 'yes' if you want to go again. Otherwise, type 'no'.
-
+```
 ### Decryption
+```
 Type 'encode' to encrypt, type 'decode' to decrypt:
 decode
 Type your message:
@@ -81,7 +83,7 @@ Type the shift number:
 3
 Here is the decoded result: hello world!
 Type 'yes' if you want to go again. Otherwise, type 'no'.
-
+```
 ### Author
 
 sudo-shakyo
